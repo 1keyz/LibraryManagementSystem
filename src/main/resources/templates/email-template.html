@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" , content="text/html" charset="UTF-8">
+</head>
+<p th:if="${hçy_idaresi != null}">
+   <span th:text="${bookTakeDate}"></span> tarihinide almis oldugunuz  <span th:text="${bookName}"></span> isimli kitab'in
+    teslimat tarihi <span th:text="${bookBringDate}"></span> budur lütfen tarih kısıtlamalarına uyunuz aksi taktirde cezai islem
+    uygulanacaktir.
+</p>
+
+<p th:if="${message != null}">
+    <span th:text="${bookTakeDate}"></span> tarihinde almis oldugunuz  <span th:text="${bookName}"></span> isimli kitab'in
+    teslimat tarihi gecmektedir gun icerisinde kitabi iade ediniz!!!
+</p>
+
+</html>
