@@ -1,13 +1,10 @@
-package com.example.librarymanagementsystem.core.configuration.taskscheduler;
+package com.example.librarymanagementsystem.config.taskscheduler;
 
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 import java.util.Date;

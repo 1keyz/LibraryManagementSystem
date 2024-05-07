@@ -1,28 +1,23 @@
-package com.example.librarymanagementsystem.core.advice.configuration;
+package com.example.librarymanagementsystem.advice.configuration;
 
 
-import com.example.librarymanagementsystem.core.advice.errordetails.*;
-import com.example.librarymanagementsystem.core.advice.types.BusinessException;
-import com.example.librarymanagementsystem.core.advice.types.CustomAuthenticationException;
-import com.example.librarymanagementsystem.core.advice.types.LoginException;
-import com.example.librarymanagementsystem.core.advice.types.NotFoundException;
-import jakarta.servlet.http.HttpServletResponse;
+import com.example.librarymanagementsystem.advice.exceptions.BusinessException;
+import com.example.librarymanagementsystem.advice.exceptions.CustomAuthenticationException;
+import com.example.librarymanagementsystem.advice.exceptions.LoginException;
+import com.example.librarymanagementsystem.advice.exceptions.NotFoundException;
+import com.example.librarymanagementsystem.dtos.errors.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.FilterChainProxy;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 

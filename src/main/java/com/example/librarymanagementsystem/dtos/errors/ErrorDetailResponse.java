@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.core.advice.errordetails;
+package com.example.librarymanagementsystem.dtos.errors;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

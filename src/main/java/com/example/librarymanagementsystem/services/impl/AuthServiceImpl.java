@@ -1,7 +1,7 @@
 package com.example.librarymanagementsystem.services.impl;
 
-import com.example.librarymanagementsystem.core.advice.types.BusinessException;
-import com.example.librarymanagementsystem.core.advice.types.LoginException;
+import com.example.librarymanagementsystem.advice.exceptions.BusinessException;
+import com.example.librarymanagementsystem.advice.exceptions.LoginException;
 import com.example.librarymanagementsystem.dtos.request.LoginRequestDto;
 import com.example.librarymanagementsystem.dtos.request.UserRequestDto;
 import com.example.librarymanagementsystem.dtos.response.LoginResponseDto;
@@ -18,12 +18,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.naming.Context;
 
 @Service
 @AllArgsConstructor

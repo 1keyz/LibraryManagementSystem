@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.core.configuration;
+package com.example.librarymanagementsystem.config;
 
 import com.example.librarymanagementsystem.converters.*;
 import lombok.AllArgsConstructor;

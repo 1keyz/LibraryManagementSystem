@@ -1,11 +1,9 @@
 package com.example.librarymanagementsystem.security;
 
-import com.example.librarymanagementsystem.core.advice.types.CustomAuthenticationException;
 import com.example.librarymanagementsystem.model.entities.User;
 import com.example.librarymanagementsystem.security.jwt.JwtHelper;
 import com.example.librarymanagementsystem.security.service.CustomUserDetailService;
 import com.example.librarymanagementsystem.services.abstracts.UserService;
-import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

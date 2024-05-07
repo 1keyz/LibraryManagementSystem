@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.core.configuration;
+package com.example.librarymanagementsystem.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

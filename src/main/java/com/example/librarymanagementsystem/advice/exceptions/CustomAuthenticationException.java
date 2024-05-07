@@ -1,6 +1,4 @@
-package com.example.librarymanagementsystem.core.advice.types;
-
-import javax.naming.AuthenticationException;
+package com.example.librarymanagementsystem.advice.exceptions;
 
 public class CustomAuthenticationException extends RuntimeException {
     public CustomAuthenticationException(String explanation) {
