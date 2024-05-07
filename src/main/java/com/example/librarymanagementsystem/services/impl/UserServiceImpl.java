@@ -1,13 +1,10 @@
 package com.example.librarymanagementsystem.services.impl;
 
-import com.example.librarymanagementsystem.core.advice.types.NotFoundException;
 import com.example.librarymanagementsystem.model.entities.User;
 import com.example.librarymanagementsystem.repositories.UserRepository;
 import com.example.librarymanagementsystem.services.abstracts.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

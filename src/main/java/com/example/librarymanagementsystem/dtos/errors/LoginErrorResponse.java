@@ -1,7 +1,6 @@
-package com.example.librarymanagementsystem.core.advice.errordetails;
+package com.example.librarymanagementsystem.dtos.errors;
 
 import com.example.librarymanagementsystem.model.enums.EnumErrorCode;
-import lombok.Builder;
 import org.springframework.http.HttpStatus;
 
 

@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.core.configuration.taskscheduler;
+package com.example.librarymanagementsystem.config.taskscheduler;
 
 import com.example.librarymanagementsystem.model.entities.BorrowedBook;
 import com.example.librarymanagementsystem.model.entities.Mail;

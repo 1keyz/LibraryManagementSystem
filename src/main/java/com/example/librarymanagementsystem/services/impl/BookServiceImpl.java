@@ -1,6 +1,6 @@
 package com.example.librarymanagementsystem.services.impl;
 
-import com.example.librarymanagementsystem.core.advice.types.NotFoundException;
+import com.example.librarymanagementsystem.advice.exceptions.NotFoundException;
 import com.example.librarymanagementsystem.dtos.request.BookRequestDto;
 import com.example.librarymanagementsystem.dtos.request.UpdateBookRequestDto;
 import com.example.librarymanagementsystem.dtos.response.BookResponseDto;

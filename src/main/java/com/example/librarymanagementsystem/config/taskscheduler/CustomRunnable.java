@@ -1,4 +1,4 @@
-package com.example.librarymanagementsystem.core.configuration.taskscheduler;
+package com.example.librarymanagementsystem.config.taskscheduler;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
