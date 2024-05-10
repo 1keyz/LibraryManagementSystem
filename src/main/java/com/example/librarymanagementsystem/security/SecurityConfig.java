@@ -1,8 +1,7 @@
 package com.example.librarymanagementsystem.security;
 
-import com.example.librarymanagementsystem.security.service.CustomBasicAuthenticationEntryPoint;
-import com.example.librarymanagementsystem.security.service.CustomBearerTokenAccesDeniedHandler;
-import com.example.librarymanagementsystem.security.service.CustomBearerTokenAuthenticationEntryPoint;
+import com.example.librarymanagementsystem.security.service.CustomAccesDeniedHandler;
+import com.example.librarymanagementsystem.security.service.CustomAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,32 +25,32 @@ public class SecurityConfig {
     private JwtFilter jwtFilter;
     private BCryptPasswordEncoder passwordEncoder;
     private UserDetailsService userDetailsService;
-    private CustomBasicAuthenticationEntryPoint entryPoint;
-    private CustomBearerTokenAuthenticationEntryPoint tokenEntryPoint;
-    private CustomBearerTokenAccesDeniedHandler accesDeniedHandler;
+    private CustomAuthenticationEntryPoint entryPoint;
+    private CustomAccesDeniedHandler deniedHandler;
 
-    public SecurityConfig(JwtFilter jwtFilter, BCryptPasswordEncoder passwordEncoder, UserDetailsService userDetailsService, CustomBasicAuthenticationEntryPoint entryPoint, CustomBearerTokenAuthenticationEntryPoint tokenEntryPoint) {
+    public SecurityConfig(JwtFilter jwtFilter, BCryptPasswordEncoder passwordEncoder, UserDetailsService userDetailsService, CustomAuthenticationEntryPoint entryPoint, CustomAccesDeniedHandler deniedHandler) {
         this.jwtFilter = jwtFilter;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.entryPoint = entryPoint;
-        this.tokenEntryPoint = tokenEntryPoint;
+        this.deniedHandler = deniedHandler;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer :: disable)
-                .httpBasic(httpb -> httpb.authenticationEntryPoint(entryPoint))
-                .exceptionHandling(ex -> ex.authenticationEntryPoint(tokenEntryPoint).accessDeniedHandler(accesDeniedHandler))
-                .authorizeHttpRequests(aut -> aut.requestMatchers("/auth/login","/auth/register").permitAll())
-                .authorizeHttpRequests(aut -> aut.requestMatchers("/book/**").hasRole("ADMIN")
-                        .requestMatchers("/borrowed-book/**").hasRole("USER"))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(aut ->
+                        aut.requestMatchers("/auth/login","/auth/register").permitAll()
+                                .requestMatchers("/book/add-book").hasRole("ADMIN")
+                                .requestMatchers("/borrowed-book/borrowing").hasRole("USER"))
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exc -> exc.authenticationEntryPoint(entryPoint).accessDeniedHandler(deniedHandler))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(authenticationProvider())
                 .build();
     }
-
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

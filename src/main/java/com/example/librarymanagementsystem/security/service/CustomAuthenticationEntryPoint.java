@@ -12,11 +12,10 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import java.io.IOException;
 
 @Component
-public class CustomBearerTokenAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
+public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
     private HandlerExceptionResolver resolver;
 
-    public CustomBearerTokenAuthenticationEntryPoint(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
+    public CustomAuthenticationEntryPoint(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
         this.resolver = resolver;
     }
 
@@ -24,7 +23,6 @@ public class CustomBearerTokenAuthenticationEntryPoint implements Authentication
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-        response.addHeader("WWW-Authenticate","Basic realm=\"Realm\"");
         resolver.resolveException(request,response,null,authException);
     }
 }

@@ -10,7 +10,8 @@ public enum EnumErrorCode {
     NOT_FOUND("HY003", HttpStatus.NOT_FOUND),
     VALIDATION_ERROR("HY004",HttpStatus.BAD_GATEWAY),
     LOGIN_ERROR("HY005" , HttpStatus.BAD_REQUEST),
-    AUTHENTICATION_ERROR("HY006",HttpStatus.UNAUTHORIZED);
+    AUTHENTICATION_ERROR("HY006",HttpStatus.UNAUTHORIZED),
+    ACCES_DENIED_ERROR("HY007",HttpStatus.FORBIDDEN);
 
     private String errorValue;
     private HttpStatus status;

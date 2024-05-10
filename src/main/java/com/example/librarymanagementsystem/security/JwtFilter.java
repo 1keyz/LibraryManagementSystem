@@ -1,21 +1,27 @@
 package com.example.librarymanagementsystem.security;
 
+import com.example.librarymanagementsystem.advice.exceptions.CustomAuthenticationException;
 import com.example.librarymanagementsystem.model.entities.User;
 import com.example.librarymanagementsystem.security.jwt.JwtHelper;
 import com.example.librarymanagementsystem.security.service.CustomUserDetailService;
 import com.example.librarymanagementsystem.services.abstracts.UserService;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.SignatureException;
 
 
 @Component
@@ -35,7 +41,12 @@ public class JwtFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")){
             token = header.substring(7);
 
-            email = jwtHelper.extractUser(token);
+            try {
+                email = jwtHelper.extractUser(token);
+            }catch (final JwtException ex) {
+               throw new CustomAuthenticationException(ex.getMessage());
+            }
+
 
 
             User user = userService.getUserByEmail(email);

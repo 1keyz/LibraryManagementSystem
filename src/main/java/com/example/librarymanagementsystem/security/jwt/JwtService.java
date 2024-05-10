@@ -61,7 +61,7 @@ public class JwtService implements JwtHelper{
                 .setClaims(claim)
                 .setSubject(email)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 *60 * 60))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
