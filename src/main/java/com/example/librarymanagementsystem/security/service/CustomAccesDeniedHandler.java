@@ -10,17 +10,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import java.io.IOException;
-
 @Component
-public class CustomBearerTokenAccesDeniedHandler implements AccessDeniedHandler {
+public class CustomAccesDeniedHandler implements AccessDeniedHandler {
     private HandlerExceptionResolver resolver;
 
-    public CustomBearerTokenAccesDeniedHandler(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
+    public CustomAccesDeniedHandler(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
         this.resolver = resolver;
     }
 
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+    public void handle(HttpServletRequest request,
+                       HttpServletResponse response,
+                       AccessDeniedException accessDeniedException) throws IOException, ServletException {
         resolver.resolveException(request,response,null,accessDeniedException);
     }
 }

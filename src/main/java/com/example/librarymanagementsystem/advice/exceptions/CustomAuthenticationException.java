@@ -1,7 +1,11 @@
 package com.example.librarymanagementsystem.advice.exceptions;
 
-public class CustomAuthenticationException extends RuntimeException {
-    public CustomAuthenticationException(String explanation) {
-        super(explanation);
+import org.springframework.security.core.AuthenticationException;
+
+import java.security.SignatureException;
+
+public class CustomAuthenticationException extends AuthenticationException {
+    public CustomAuthenticationException(String msg) {
+        super(msg);
     }
 }
