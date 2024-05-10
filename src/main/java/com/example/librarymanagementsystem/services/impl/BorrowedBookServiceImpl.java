@@ -99,7 +99,7 @@ public class BorrowedBookServiceImpl implements BorrowedBookService {
 
     private Map<String,Object> properties(BorrowedBook borrowedBook) {
         Map<String , Object> prop = new HashMap<>();
-        prop.put("HÇY kutuphanesinden kitap alındığına dair" , "hçy_idaresi");
+        prop.put("hçy_idaresi" , "HÇY kutuphanesinden kitap alındığına dair");
         prop.put("bookName" , borrowedBook.getBookName());
         prop.put("bookTakeDate" , Date.from(borrowedBook.getTakenAt().atZone(ZoneId.systemDefault()).toInstant()));
         prop.put("bookBringDate" , Date.from(borrowedBook.getBringBackAt().atZone(ZoneId.systemDefault()).toInstant()));
